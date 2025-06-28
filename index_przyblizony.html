@@ -675,13 +675,13 @@ map.on('zoomend moveend', function () {
         function style_Dworcekolejowe_3_0() {
             return {
                 pane: 'pane_Dworcekolejowe_3',
-                radius: 4.0,
+                radius: 5.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
                 lineCap: 'butt',
                 lineJoin: 'miter',
-                weight: 1,
+                weight: 2,
                 fill: true,
                 fillOpacity: 1,
                 fillColor: 'rgba(190,207,80,1.0)',
@@ -843,12 +843,16 @@ map.on('zoomend moveend', function () {
             pane: 'pane_Sklepyroweroweexp_6',
             onEachFeature: pop_Sklepyroweroweexp_6,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Sklepyroweroweexp_6_0(feature));
-            },
+    return L.circleMarker(latlng, {
+        radius: 4,
+        fillColor: '#9B59B6', // ← kolor fioletowy (sklepy rowerowe)
+        color: '#000',        // obwódka
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    });
+}
+
         });
         bounds_group.addLayer(layer_Sklepyroweroweexp_6);
         // map.addLayer(layer_Sklepyroweroweexp_6);
@@ -895,12 +899,15 @@ map.on('zoomend moveend', function () {
             pane: 'pane_Wypoyczalniarowerwexp_7',
             onEachFeature: pop_Wypoyczalniarowerwexp_7,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Wypoyczalniarowerwexp_7_0(feature));
-            },
+    return L.circleMarker(latlng, {
+        radius: 4,
+        fillColor: '#7F8C8D', // 
+        color: '#000',        // obwódka
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    });
+},
         });
         bounds_group.addLayer(layer_Wypoyczalniarowerwexp_7);
         // map.addLayer(layer_Wypoyczalniarowerwexp_7);
@@ -988,12 +995,15 @@ map.on('zoomend moveend', function () {
             pane: 'pane_Stacjanaprawyrowerwexp_9',
             onEachFeature: pop_Stacjanaprawyrowerwexp_9,
             pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.circleMarker(latlng, style_Stacjanaprawyrowerwexp_9_0(feature));
-            },
+    return L.circleMarker(latlng, {
+        radius: 4,
+        fillColor: '#E74C3C', // 
+        color: '#000',        // obwódka
+        weight: 1,
+        opacity: 1,
+        fillOpacity: 0.8
+    });
+},
         });
         bounds_group.addLayer(layer_Stacjanaprawyrowerwexp_9);
         //map.addLayer(layer_Stacjanaprawyrowerwexp_9);
@@ -7695,7 +7705,7 @@ popupContent += `<tr><td colspan="2" style="text-align:center; padding-top:8px;"
         rotationOrigin: 'center center',
         icon: L.icon({
             iconUrl: 'markers/Dworcekolejowe_129.svg',
-            iconSize: [13.68, 13.68]
+            iconSize: [18, 18]
         }),
                 interactive: true,
             }
@@ -7846,10 +7856,19 @@ popupContent += `<tr><td colspan="2" style="text-align:center; padding-top:8px;"
             {label: '<img src="legend/Przystankitramwajowe_11.png" /> Przystanki tramwajowe', layer: layer_Przystankitramwajowe_11},
         {label: '<b>Infrastruktura rowerowa</b>', selectAllCheckbox: true, expanded: false, children: [
             {label: '<img src="legend/Pasyroweroweexp_10.png" /> Pasy rowerowe', layer: layer_Pasyroweroweexp_10},
-            {label: '<img src="legend/Stacjanaprawyrowerwexp_9.png" /> Stacja naprawy rowerów', layer: layer_Stacjanaprawyrowerwexp_9},
+            {
+			label: '<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#E74C3C; border:1px solid #000; margin-right:6px;"></span> Stacja naprawy rowerów',
+			layer: layer_Stacjanaprawyrowerwexp_9
+			},
             {label: '<img src="legend/Parkinigidlarowerwexp_8.png" /> Parkinigi dla rowerów', layer: layer_Parkinigidlarowerwexp_8},
-            {label: '<img src="legend/Wypoyczalniarowerwexp_7.png" /> Wypożyczalnia rowerów', layer: layer_Wypoyczalniarowerwexp_7},
-            {label: '<img src="legend/Sklepyroweroweexp_6.png" /> Sklepy rowerowe', layer: layer_Sklepyroweroweexp_6},
+            {
+			label: '<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#7F8C8D; border:1px solid #000; margin-right:6px;"></span> Wypożyczalnie rowerów',
+			layer: layer_Wypoyczalniarowerwexp_7
+			},
+            {
+			label: '<span style="display:inline-block; width:12px; height:12px; border-radius:50%; background:#9B59B6; border:1px solid #000; margin-right:6px;"></span> Sklepy rowerowe',
+			layer: layer_Sklepyroweroweexp_6
+			},
             {label: '<img src="legend/ciekiroweroweexp_5.png" /> Ścieżki rowerowe', layer: layer_ciekiroweroweexp_5},]},
             {label: '<img src="legend/ParkujiJed_4.png" /> Parkuj i Jedź', layer: layer_ParkujiJed_4},
             {label: '<img src="legend/GranicamiastaWrocaw_1.png" /> Granica miasta Wrocław', layer: layer_GranicamiastaWrocaw_1},
